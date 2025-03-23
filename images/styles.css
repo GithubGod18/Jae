@@ -259,3 +259,19 @@ header {
     background-color: #b58e29;
     transform: scale(1.05);
 }
+#about-me h2 {
+    color: #003d14;
+    font-size: 1.8em;
+    margin-top: 20px;
+    border-bottom: 2px solid #227a3d;
+    padding-bottom: 5px;
+}
+
+#about-me p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
