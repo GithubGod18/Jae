@@ -4,150 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Digital Reading Portfolio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            color: #2b4820;
-            transition: background 0.5s ease-in-out;
-            position: relative;
-        }
-
-        /* Background Container */
-        .background-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('images/ngs.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            z-index: -2;
-        }
-
-        /* Overlay for Opacity Effect */
-        .background-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.3); /* Adjust last value for opacity */
-            z-index: -1;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 300px;
-            background-color: #004d1a;
-            color: white;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 20px;
-            z-index: 1000;
-        }
-        .sidebar a {
-            display: block;
-            color: white;
-            padding: 15px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .sidebar a:hover {
-            background-color: #227a3d;
-        }
-
-        /* Content */
-        .main-content {
-            margin-left: 320px;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        header {
-            background-color: #004d1a;
-            color: gold;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Content Sections */
-        .content {
-            background: white;
-            padding: 20px;
-            margin: 20px auto;
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-            display: none;
-        }
-        .content.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Image Upload */
-        .upload-box {
-            width: 80%;
-            height: 200px;
-            border: 2px dashed gold;
-            margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-            font-size: 1.2em;
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-        }
-        .upload-box:hover {
-            transform: scale(1.05);
-        }
-
-        /* Navigation Buttons */
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .nav-buttons button {
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            border: none;
-            background-color: #004d1a;
-            color: white;
-            border-radius: 5px;
-            transition: background 0.3s, transform 0.2s ease-in-out;
-        }
-        .nav-buttons button:hover {
-            background-color: #227a3d;
-            transform: scale(1.05);
-        }
-        .nav-buttons button:active {
-            background-color: #67a379;
-            transform: scale(1.05);
-        }
-    </style>
 </head>
+
 <body>
 
-    <!-- Background Image with Opacity -->
     <div class="background-container"></div>
     <div class="background-overlay"></div>
 
@@ -178,18 +41,29 @@
 
         <div id="reading-process" class="content">
             <h1>Reading Process Worksheets</h1>
-            <div class="upload-box" onclick="document.getElementById('fileInput1').click()">Upload Files</div>
-            <input type="file" id="fileInput1" style="display: none;">
+        
+            <!-- PDF Section -->
+            <div class="section-container">
+                <iframe src="images/worksheet1.pdf" width="100%" height="500px"></iframe>
+                <iframe src="images/worksheet2.pdf" width="100%" height="500px"></iframe>
+            </div>
+        
             <div class="nav-buttons">
                 <button onclick="showSection('home')">Previous: Home</button>
                 <button onclick="showSection('reader-responses')">Next: Reader Responses</button>
             </div>
         </div>
+        
 
         <div id="reader-responses" class="content">
             <h1>Reader Responses</h1>
-            <div class="upload-box" onclick="document.getElementById('fileInput2').click()">Upload Images</div>
-            <input type="file" id="fileInput2" style="display: none;">
+        
+            <div class="section-header">My Responses</div>
+            <div class="image-gallery">
+                <img src="images/response1.jpg" alt="Response 1" onclick="openFullscreen(this)">
+                <img src="images/response2.jpg" alt="Response 2" onclick="openFullscreen(this)">
+            </div>
+        
             <div class="nav-buttons">
                 <button onclick="showSection('reading-process')">Previous: Reading Process</button>
                 <button onclick="showSection('icare-activities')">Next: My iCARE Activities</button>
@@ -198,13 +72,27 @@
 
         <div id="icare-activities" class="content">
             <h1>My iCARE Activities</h1>
-            <div class="upload-box" onclick="document.getElementById('fileInput3').click()">Upload Work</div>
-            <input type="file" id="fileInput3" style="display: none;">
+        
+            <div class="section-header">Main iCARE Activities</div>
+            <div class="main-image">
+                <img src="images/icare_main1.jpg" alt="iCARE Main 1" onclick="openFullscreen(this)">
+                <img src="images/icare_main2.jpg" alt="iCARE Main 2" onclick="openFullscreen(this)">
+            </div>
+        
+            <div class="section-header">Evidence of Participation</div>
+            <div class="evidence-gallery">
+                <img src="images/evidence1.jpg" alt="Evidence 1" onclick="openFullscreen(this)">
+                <img src="images/evidence2.jpg" alt="Evidence 2" onclick="openFullscreen(this)">
+                <img src="images/evidence3.jpg" alt="Evidence 3" onclick="openFullscreen(this)">
+            </div>
+        
             <div class="nav-buttons">
                 <button onclick="showSection('reader-responses')">Previous: Reader Responses</button>
                 <button onclick="showSection('about-me')">Next: About Me</button>
             </div>
         </div>
+        
+
         <div id="about-me" class="content">
             <h1>About Me</h1>
             <p>Hi guys I am Jae Hyun Tukushima, BSCSAI student aspiring to be better everyday!</p>
@@ -214,12 +102,43 @@
         </div>
     </div>
 
+    <!-- Fullscreen Image Container -->
+    <div id="fullscreen-container" class="image-fullscreen" style="display: none;">
+        <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+        <span class="zoom-btn" onclick="zoomImage(1.2)"><i class="fas fa-search-plus"></i></span>
+        <span class="zoom-btn" onclick="zoomImage(0.8)"><i class="fas fa-search-minus"></i></span>
+        <img id="fullscreen-image" src="" alt="" style="transform: scale(1);">
+    </div>
+    <script src="script.js"></script>
+
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.content').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
+        let currentScale = 1;
+    
+        // Open fullscreen with the clicked image
+        function openFullscreen(imgElement) {
+            const fullscreenContainer = document.getElementById('fullscreen-container');
+            const fullscreenImage = document.getElementById('fullscreen-image');
+            fullscreenImage.src = imgElement.src;
+            fullscreenImage.style.transform = "scale(1)";
+            currentScale = 1;
+            fullscreenContainer.style.display = 'flex';
+        }
+    
+        // Close the fullscreen image
+        function closeFullscreen() {
+            document.getElementById('fullscreen-container').style.display = 'none';
+        }
+    
+        // Zoom in/out functionality
+        function zoomImage(scaleFactor) {
+            const fullscreenImage = document.getElementById('fullscreen-image');
+            currentScale *= scaleFactor;
+    
+            // Set zoom limits
+            if (currentScale < 0.5) currentScale = 0.5;
+            if (currentScale > 3) currentScale = 3;
+    
+            fullscreenImage.style.transform = `scale(${currentScale})`;
         }
     </script>
 
